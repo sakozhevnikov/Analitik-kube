@@ -1,6 +1,7 @@
 import streamlit as st  # Библиотека для веба
 import pandas as pd  # Для работы с данными
 import numpy as np
+from modules.data_loader import load_data # Используем файл из теста
 
 
 # Настройка страницы
@@ -37,11 +38,11 @@ def show_data_upload():
 
     if uploaded_file is not None:
         try:
-            # Определяем тип файла и загружаем
-            if uploaded_file.name.endswith(".csv"):
-                df = pd.read_csv(uploaded_file)
-            else:
-                df = pd.read_excel(uploaded_file)
+
+            df = load_data(uploaded_file)
+            if df is None:
+                st.error("❌ Ошибка при загрузке файла")
+                return
 
             # Сохраняем в session_state для использования в других функциях
             st.session_state["current_data"] = df
