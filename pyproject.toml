@@ -1,0 +1,40 @@
+[project]
+name = "my-diploma-project"
+version = "0.1.0"
+description = "Дипломный проект: Аналитическая система для обработки данных"
+
+dependencies = [
+    "streamlit>=1.28.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "plotly>=5.15.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "openpyxl>=3.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.0",
+    "pytest>=7.4.0",
+    "mypy>=1.6.0",
+]
+
+# Убираем сложную систему сборки - нам не нужно собирать пакет
+[build-system]
+requires = ["setuptools>=45.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "C4", "UP"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+# Говорим что это не устанавливаемый пакет
+[tool.setuptools]
+py-modules = []
