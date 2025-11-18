@@ -339,7 +339,7 @@ class Isomap:
 class MLModelFactory:
     _models = {
         'kmeans': KMeansModel, SettingKMeansModel
-        'dbscan': DBSCANModel,
+        'dbscan': DBSCANModel, SettingKMeansModel
         'pca': PCAModel,
         'tsne': TSNEModel,
         'random_forest': RandomForestModel,
